@@ -3,13 +3,12 @@ import {
   Text,
   StyleSheet,
   View,
-  Button,
   Dimensions,
   TouchableOpacity
 } from "react-native";
 import Modal from "react-native-modal";
 import { addTodo } from "../store/actions/todoAction";
-import { Overlay, Input } from "react-native-elements";
+import { Input } from "react-native-elements";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -65,12 +64,14 @@ class AddTodo extends Component {
             </View>
           </View>
         </Modal>
-        <Icon
-          size={40}
-          color="#333333"
-          name="plus-circle-outline"
-          onPress={() => this.toggleOverlay()}
-        />
+        <View style={{ padding: 10 }}>
+          <Icon
+            size={24}
+            color="#333333"
+            name="plus"
+            onPress={() => this.toggleOverlay()}
+          />
+        </View>
       </View>
     );
   }

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { StyleSheet, View, SafeAreaView } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { ScrollView } from 'react-navigation';
 import ItemCard from "./ItemCard";
 import { removeTodo, completeTodo } from "../store/actions/todoAction";
 import { connect } from "react-redux";
-import AddTodo from "./AddTodo";
 
 class CompletedTodo extends Component {
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <View>
+      <View style={styles.container}>
+        <ScrollView>
           {this.props.items.map(item => {
             return item.completed ? (
               <ItemCard
@@ -26,11 +26,8 @@ class CompletedTodo extends Component {
               />
             ) : null;
           })}
-        </View>
-        <View style={styles.addBtn}>
-          <AddTodo />
-        </View>
-      </SafeAreaView>
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -51,13 +48,7 @@ const mapDispatchToProps = dispatch => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 100
-  },
-  addBtn: {
-    alignSelf: "flex-end",
-    padding: 20
+    alignItems: "center"
   }
 });
 

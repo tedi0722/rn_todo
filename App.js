@@ -1,14 +1,28 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 import AppContainer from "./src/navigation/AppContainer";
 import { Provider } from "react-redux";
-import store from "./src/store/store";
+import { store, persistor } from "./src/store/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 export default class App extends Component {
+  renderActivityIndicator() {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
   render() {
     return (
       <Provider store={store}>
-        <AppContainer />
+        <PersistGate
+          persistor={persistor}
+          loading={this.renderActivityIndicator()}
+        >
+          <AppContainer />
+        </PersistGate>
       </Provider>
     );
   }

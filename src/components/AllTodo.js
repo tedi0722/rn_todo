@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, View, SafeAreaView } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { ScrollView } from "react-navigation";
 import { connect } from "react-redux";
-import { Header } from "react-native-elements";
 import { addTodo, removeTodo, completeTodo } from "../store/actions/todoAction";
 import ItemCard from "./ItemCard";
-import AddTodo from "./AddTodo";
 
 class AllTodo extends Component {
   constructor(props) {
@@ -16,8 +15,8 @@ class AllTodo extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <View>
+      <View style={styles.container}>
+        <ScrollView>
           {this.props.items.map(item => {
             return (
               <ItemCard
@@ -33,11 +32,8 @@ class AllTodo extends Component {
               />
             );
           })}
-        </View>
-        <View style={styles.addBtn}>
-          <AddTodo />
-        </View>
-      </SafeAreaView>
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -59,13 +55,7 @@ const mapDispatchToProps = dispatch => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 100
-  },
-  addBtn: {
-    alignSelf: "flex-end",
-    padding: 20
+    alignItems: "center"
   }
 });
 

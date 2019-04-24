@@ -9,6 +9,9 @@ const DrawerNavigator = createDrawerNavigator({
   Login: {
     screen: Login
   }
+},
+{
+  drawerType: "slide"
 });
 
 export default DrawerNavigator;

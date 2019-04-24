@@ -1,56 +1,57 @@
-import React from 'react';
+import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 import AllTodo from "../components/AllTodo";
 import ActiveTodo from "../components/ActiveTodo";
 import CompletedTodo from "../components/CompletedTodo";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const TabNavigator = createBottomTabNavigator({
-  All: {
-    screen: AllTodo,
-    navigationOptions: () => ({
-        tabBarIcon: ({tintColor}) => (
+const TabNavigator = createBottomTabNavigator(
+  {
+    All: {
+      screen: AllTodo,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (
           <Icon
             size={16}
             name="format-list-checkbox"
-            style={{color: tintColor}}
+            style={{ color: tintColor }}
           />
         )
-    })
-  },
-  Active: {
-    screen: ActiveTodo,
-    navigationOptions: () => ({
-        tabBarIcon: ({tintColor}) => (
+      })
+    },
+    Active: {
+      screen: ActiveTodo,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (
           <Icon
             size={16}
             name="checkbox-blank-circle-outline"
-            style={{color: tintColor}}
+            style={{ color: tintColor }}
           />
         )
-    })
-  },
-  Completed: {
-    screen: CompletedTodo,
-    navigationOptions: () => ({
-        tabBarIcon: ({tintColor}) => (
+      })
+    },
+    Completed: {
+      screen: CompletedTodo,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (
           <Icon
             size={16}
             name="checkbox-marked-circle"
-            style={{color: tintColor}}
+            style={{ color: tintColor }}
           />
         )
-    })
-  }
-},
-{
-    tabBarOptions: {
-        // activeTintColor: "skyblue",
-        style: {
-            padding: 10,
-            borderTopColor: "#333333"
-        }
+      })
     }
-});
+  },
+  {
+    tabBarOptions: {
+      style: {
+        padding: 10,
+        borderTopColor: "#333333"
+      }
+    }
+  }
+);
 
 export default TabNavigator;
