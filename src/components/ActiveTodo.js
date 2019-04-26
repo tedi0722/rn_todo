@@ -14,7 +14,7 @@ class ActiveTodo extends Component {
             return item.completed ? null : (
               <ItemCard
                 key={item.id}
-                title="title"
+                title={item.title}
                 text={item.text}
                 iconName={
                   item.completed
@@ -23,6 +23,7 @@ class ActiveTodo extends Component {
                 }
                 remove={() => this.props.removeTodo(item.id)}
                 complete={() => this.props.completeTodo(item.id)}
+                photoUri={item.photoUri}
               />
             );
           })}

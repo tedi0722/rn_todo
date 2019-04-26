@@ -2,13 +2,12 @@ import { ADD_TODO, REMOVE_TODO, COMPLETE_TODO } from "./actionTypes";
 
 let todoID = 1;
 
-export const addTodo = (text) => {
+export const addTodo = (item) => {
   return {
     type: ADD_TODO,
     payload: {
-      id: todoID++,
-      text: text,
-      completed: false
+      ...item,
+      id: todoID++
     }
   };
 };

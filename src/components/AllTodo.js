@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import { ScrollView } from "react-navigation";
 import { connect } from "react-redux";
 import { addTodo, removeTodo, completeTodo } from "../store/actions/todoAction";
@@ -8,9 +8,7 @@ import ItemCard from "./ItemCard";
 class AllTodo extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: ""
-    };
+    this.state = {};
   }
 
   render() {
@@ -20,6 +18,7 @@ class AllTodo extends Component {
           {this.props.items.map(item => {
             return (
               <ItemCard
+                title={item.title}
                 key={item.id}
                 text={item.text}
                 iconName={
@@ -29,6 +28,7 @@ class AllTodo extends Component {
                 }
                 remove={() => this.props.removeTodo(item.id)}
                 complete={() => this.props.completeTodo(item.id)}
+                photoUri={item.photoUri}
               />
             );
           })}
