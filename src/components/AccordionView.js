@@ -12,7 +12,6 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Accordion from "react-native-collapsible/Accordion";
 import { connect } from "react-redux";
 import { removeTodo, completeTodo } from "../store/actions/todoAction";
-import Swipeout from "react-native-swipeout";
 
 const { width } = Dimensions.get("window");
 
@@ -34,7 +33,7 @@ class AccordionView extends Component {
       <View>
         <ScrollView>
           <Accordion
-            // expandMultiple={true}
+            expandMultiple={false}
             easing="easeOut"
             duration={200}
             touchableComponent={TouchableOpacity}
@@ -51,13 +50,12 @@ class AccordionView extends Component {
                         : "checkbox-blank-circle-outline"
                     }
                     onPress={() => this.props.completeTodo(section.id)}
-                    style={styles.completeIcon}
                   />
                   <Text style={styles.sectionHeaderText}>{section.title}</Text>
                   <View>
                     <Icon
                       size={20}
-                      color="#dddddd"
+                      color="#ffffff"
                       name="close"
                       onPress={() => this.props.removeTodo(section.id)}
                     />
@@ -112,58 +110,6 @@ class AccordionView extends Component {
           />
         </ScrollView>
       </View>
-
-      // <Card
-      //   title={
-      //     <View style={styles.cardHeader}>
-      //       <Text style={styles.cardHeaderText}>{this.props.title}</Text>
-      //       <Icon size={20} name="close" onPress={this.props.remove} />
-      //     </View>
-      //   }
-      // >
-      //   <View style={styles.cardBody}>
-      //     {this.props.photoUri && (
-      //       <View style={{ marginTop: 10, marginBottom: 20 }}>
-      //         <TouchableOpacity
-      //           style={{
-      //             width: width * 0.8,
-      //             alignSelf: "center",
-      //             alignItems: "center"
-      //           }}
-      //           onPress={() => this.toggleOverlay()}
-      //         >
-      //           <Image
-      //             resizeMode="cover"
-      //             source={{ uri: this.props.photoUri }}
-      //             style={{ width: width * 0.8, height: 100 }}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     )}
-      //     <Text>{this.props.text}</Text>
-      //     <Icon
-      //       color="#2196f3"
-      //       size={20}
-      //       name={this.props.iconName}
-      //       onPress={this.props.complete}
-      //       style={styles.completeIcon}
-      //     />
-      //   </View>
-      //   <Modal
-      //     onBackdropPress={() => this.toggleOverlay()}
-      //     isVisible={this.state.isVisible}
-      //   >
-      //     <View style={{ width: width, alignSelf: "center" }}>
-      //       <ScrollView minimumZoomScale={0} maximumZoomScale={2}>
-      //         <Image
-      //           resizeMode="contain"
-      //           source={{ uri: this.props.photoUri }}
-      //           style={{ width: width, height: width }}
-      //         />
-      //       </ScrollView>
-      //     </View>
-      //   </Modal>
-      // </Card>
     );
   }
 }
@@ -176,28 +122,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const styles = StyleSheet.create({
-  cardBody: {
-    width: width * 0.8,
-    padding: 10
-  },
-  cardHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingRight: 10,
-    paddingBottom: 10,
-    paddingLeft: 10,
-    borderBottomWidth: 1,
-    borderColor: "#888888"
-  },
-  cardHeaderText: {
-    fontWeight: "bold"
-  },
-  completeIcon: {
-    alignSelf: "flex-end"
-  },
   sectionHeader: {
-    // marginTop: 10,
     padding: 10,
     width: width * 0.9,
     backgroundColor: "#505050",
@@ -212,7 +137,6 @@ const styles = StyleSheet.create({
     color: "#dddddd"
   },
   sectionContent: {
-    // padding: 20,
     width: width * 0.9,
     backgroundColor: "#505050",
     opacity: 0.7,
