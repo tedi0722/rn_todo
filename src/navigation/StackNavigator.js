@@ -11,8 +11,15 @@ const StackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       headerTitle: "GYSD",
+      headerTitleStyle: {
+        color: "#20B2AA"
+      },
       headerLeft: <MenuButton navigation={navigation} />,
-      headerRight: <AddTodo />
+      headerRight: <AddTodo />,
+      headerStyle: {
+        backgroundColor: "#282828",
+      }
+      
     })
   }
 );

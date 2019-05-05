@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Dimensions,
-} from "react-native";
+import { Text, StyleSheet, View, Dimensions } from "react-native";
 import Modal from "react-native-modal";
 import { addTodo } from "../store/actions/todoAction";
 import { Input, Button } from "react-native-elements";
@@ -55,6 +50,14 @@ class AddTodo extends Component {
   render() {
     return (
       <View>
+        <View style={{ padding: 10 }}>
+          <Icon
+            size={24}
+            color="#20B2AA"
+            name="plus"
+            onPress={() => this.toggleOverlay()}
+          />
+        </View>
         <Modal
           animationIn="fadeIn"
           animationOut="fadeOut"
@@ -66,19 +69,26 @@ class AddTodo extends Component {
             <Icon
               style={{ alignSelf: "flex-end" }}
               size={20}
+              color="#dddddd"
               name="close"
               onPress={() => this.toggleOverlay()}
             />
             <View>
               <Input
-                containerStyle={styles.input}
+                containerStyle={{ marginBottom: 10 }}
+                inputStyle={{ color: "#dddddd" }}
+                labelStyle={{ color: "#dddddd" }}
                 placeholder="Title"
+                placeholderTextColor="#555555"
                 value={this.state.title}
                 onChangeText={title => this.setState({ title })}
               />
               <Input
-                containerStyle={styles.input}
+                containerStyle={{ marginBottom: 10 }}
+                inputStyle={{ color: "#dddddd" }}
+                labelStyle={{ color: "#dddddd" }}
                 placeholder="Description"
+                placeholderTextColor="#555555"
                 multiline={true}
                 value={this.state.text}
                 onChangeText={text => this.setState({ text })}
@@ -93,7 +103,7 @@ class AddTodo extends Component {
                 }}
               >
                 <Icon name="paperclip" />
-                <Text>{this.state.photoName}</Text>
+                <Text style={{ color: "#dddddd" }}>{this.state.photoName}</Text>
               </View>
             )}
             <View
@@ -111,7 +121,7 @@ class AddTodo extends Component {
                     paddingRight: 0,
                     paddingBottom: 0,
                     paddingLeft: 0,
-                    backgroundColor: "#2196f3"
+                    backgroundColor: "#20B2AA"
                   }}
                   icon={<Icon color="white" size={26} name="image" />}
                   onPress={() => this.handleChoosePhoto()}
@@ -124,7 +134,7 @@ class AddTodo extends Component {
                     paddingRight: 10,
                     paddingBottom: 2,
                     paddingLeft: 10,
-                    backgroundColor: "#2196f3"
+                    backgroundColor: "#20B2AA"
                   }}
                   title="Add"
                   onPress={() => {
@@ -137,14 +147,6 @@ class AddTodo extends Component {
             </View>
           </View>
         </Modal>
-        <View style={{ padding: 10 }}>
-          <Icon
-            size={24}
-            color="#333333"
-            name="plus"
-            onPress={() => this.toggleOverlay()}
-          />
-        </View>
       </View>
     );
   }
@@ -158,7 +160,7 @@ const mapDispatchToProps = dispatch => {
 
 const styles = StyleSheet.create({
   modalView: {
-    backgroundColor: "white",
+    backgroundColor: "#333333",
     borderWidth: 1,
     borderRadius: 5,
     padding: 10

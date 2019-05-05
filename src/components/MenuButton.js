@@ -8,6 +8,7 @@ const MenuButton = props => (
       onPress={() => props.navigation.toggleDrawer()}
       size={24}
       name="menu"
+      color="#20B2AA"
     />
   </View>
 );
